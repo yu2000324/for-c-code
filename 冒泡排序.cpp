@@ -4,7 +4,7 @@ int main()
 {
 	int i, j, tmp;
 	int Bubble[N];
-	printf_s("请输入十个数:");
+	printf_s("please input Array number:");
 	for (i = 0; i < N; i++)
 	{
 		scanf_s("%d", &Bubble[i]);
