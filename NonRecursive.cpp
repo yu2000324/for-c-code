@@ -63,7 +63,7 @@ int main()
     CreatBinrayTree(&T);
     Stack S;
     S.top = -1;
-    //push(&S, 'A');
+    push(&S, 'A');
     char i = pop(&S);
     printf("\n");
     printf("%d\n", S.top);
