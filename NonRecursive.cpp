@@ -60,7 +60,7 @@ Tree pop(Stack *S)
 }
 int IsEmpty(Stack S)
 {
-    S.top = S.top +1;
+    S.top = S.top + 1;
     return S.top;
 }
 Stack InOrderTraversal(Tree T)
@@ -73,7 +73,7 @@ Stack InOrderTraversal(Tree T)
         while (t != NULL)
         {
             push(&S, t);
-            t=t->lchild;
+            t = t->lchild;
         }
         if (IsEmpty(S) != 0)
         {
