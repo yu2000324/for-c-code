@@ -4,10 +4,10 @@ typedef struct date
     int length;
     int Element[10];
 } MyDate;
-int SequenceSearch(MyDate *tbl, int k)            //传参tbl和哨兵k
+int SequenceSearch(MyDate *tbl, int k)                           //传参tbl和哨兵k
 {
     int i;
-    tbl->Element[0] = k;                  //把数组第一个位置放置k
+    tbl->Element[0] = k;                                        //把数组第一个位置放置k
     for (i = tbl->length - 1; tbl->Element[i] != k; i--)       //写一个判断数组是否等于k的循环，中止时i就是k的位置
         ;
     return i;
