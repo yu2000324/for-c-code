@@ -1,33 +1,33 @@
 #include "stdio.h"
 #include <malloc.h>
-constexpr auto MAX_VERTEX_NUM = 50;//���50���ڵ�
+constexpr auto MAX_VERTEX_NUM = 50;
 typedef char VertexType[2];
 typedef struct edgenode
 {
 	int adjvex;
 	int value;
-	struct edgenode* next;
-}ArcNode;
+	struct edgenode *next;
+} ArcNode;
 typedef struct vexnode
 {
 	VertexType date;
-	ArcNode * fristarc;
-}VHeadNode;
+	ArcNode *fristarc;
+} VHeadNode;
 typedef struct
 {
 	int Vertex_Num, Edge_Num;
 	VHeadNode adjlist[MAX_VERTEX_NUM];
-}Adjlist;
-int creat(Adjlist*& G)
+} Adjlist;
+int creat(Adjlist *&G)
 {
 	int i, b, t, v;
-	ArcNode* p;
-	G = (Adjlist*)malloc(sizeof(Adjlist*));
+	ArcNode *p;
+	G = (Adjlist *)malloc(sizeof(Adjlist *));
 	printf("please input vertex and edge:");
 	scanf("%d%d", &G->Vertex_Num, &G->Edge_Num);
-	for (i = 0; i < G->Vertex_Num; i++) 
+	for (i = 0; i < G->Vertex_Num; i++)
 	{
-		G->adjlist[i].fristarc=NULL;
+		G->adjlist[i].fristarc = NULL;
 	}
 	for (i = 0; i < G->Edge_Num; i++)
 	{
@@ -36,7 +36,7 @@ int creat(Adjlist*& G)
 		scanf("%d%d", &b, &t);
 		if (b < G->Vertex_Num && t < G->Vertex_Num)
 		{
-			p = (ArcNode*)malloc(sizeof(ArcNode));
+			p = (ArcNode *)malloc(sizeof(ArcNode));
 			p->adjvex = t;
 			p->next = G->adjlist[b].fristarc;
 			G->adjlist[b].fristarc = p;
@@ -49,10 +49,10 @@ int creat(Adjlist*& G)
 	}
 	return 1;
 }
-void Disp_list(Adjlist* &G)
+void Disp_list(Adjlist *&G)
 {
 	int i;
-	ArcNode* p;
+	ArcNode *p;
 	printf("ͼ����ӱ�ͼ���£�");
 	for (i = 0; i < G->Vertex_Num; i++)
 	{

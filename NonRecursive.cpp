@@ -9,34 +9,9 @@ typedef struct BinrayTree
 } TreeNode, *Tree;
 typedef struct
 {
-    char data[MaxSize];
+    Tree data[MaxSize];
     int top;
 } Stack;
-void push(Stack *S, char Mychar)
-{
-    if ((S->top) == MaxSize - 1)
-    {
-        printf("栈已满");
-        return;
-    }
-    else
-    {
-        S->data[++(S->top)] = Mychar;
-        return;
-    }
-}
-char pop(Stack *S)
-{
-    if (S->top == -1)
-    {
-        printf("栈已空");
-        return ' ';
-    }
-    else
-    {
-        return S->data[(S->top)--];
-    }
-}
 void CreatBinrayTree(Tree *T)
 {
     char ch;
@@ -57,17 +32,62 @@ void CreatBinrayTree(Tree *T)
         CreatBinrayTree(&(*T)->rchild);
     }
 }
+void push(Stack *S, Tree T)
+{
+    Tree t = T;
+    if ((S->top) == MaxSize - 1)
+    {
+        printf("栈已满");
+        return;
+    }
+    else
+    {
+        S->data[++(S->top)] = t;
+        return;
+    }
+}
+Tree pop(Stack *S)
+{
+    if (S->top == -1)
+    {
+        printf("栈已空");
+        return NULL;
+    }
+    else
+    {
+        return S->data[(S->top)--];
+    }
+}
+int IsEmpty(Stack S)
+{
+    S.top = S.top +1;
+    return S.top;
+}
+Stack InOrderTraversal(Tree T)
+{
+    Tree t = T;
+    Stack S;
+    S.top = -1;
+    while (t != NULL || IsEmpty(S) != 0)
+    {
+        while (t != NULL)
+        {
+            push(&S, t);
+            t=t->lchild;
+        }
+        if (IsEmpty(S) != 0)
+        {
+            t = pop(&S);
+            printf("%c", t->Mychar);
+            t = t->rchild;
+        }
+    }
+    return S;
+}
 int main()
 {
     Tree T;
     CreatBinrayTree(&T);
-    Stack S;
-    S.top = -1;
-    push(&S, 'A');
-    char i = pop(&S);
-    printf("\n");
-    printf("%d\n", S.top);
-    printf("%c\n", S.data[0]);
-    printf("%c", i);
+    InOrderTraversal(T);
     return 0;
 }
