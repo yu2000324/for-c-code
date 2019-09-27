@@ -62,7 +62,7 @@ Tree DeleteNode(Tree T, int AddNum) //使用递归的方式找查并删除节点
         {
             tmp = FindMin(T->rchild);                   //tmp存最小值的节点
             T->data = tmp->data;                        //修改该节点的值
-            T->rchild = DeleteNode(T->rchild, T->data); //再次递归删除最小的节点
+            T->rchild = DeleteNode(T->rchild, T->data); //把T的右节点作为根节点再次递归删除最小的节点
         }
         else
         {
